@@ -39,7 +39,7 @@ void keyPressed() {
       case UP:
         player.jump();
       case DOWN:
-        player.crouch();
+        player.crouch(true);
     }
   }
 }
@@ -48,7 +48,7 @@ void keyReleased() {
   if (key == CODED) {
     switch(keyCode) {
       case DOWN:
-        player.crouch();
+        player.crouch(false);
     }
   }
 }
