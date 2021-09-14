@@ -50,6 +50,18 @@ class Player extends Component {
     }
   }
   
+  void crouch() {
+    if (groundCheck() == true) {
+      h = 50;
+      location.y = currentLevel.groundY - (h / 2);
+    }
+    
+    if (groundCheck() == false) {
+      h = 100;
+      location.y = currentLevel.groundY - (h / 2);
+    }
+  }
+  
   boolean groundCheck() {
     if (location.y + (h / 2) >= currentLevel.groundY) {
       return true;

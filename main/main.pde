@@ -21,6 +21,8 @@ void draw() {
   clear();
   background(255);
   
+  println(player.groundCheck());
+  
   l.display();
   player.display();
   player.update();
@@ -37,7 +39,16 @@ void keyPressed() {
       case UP:
         player.jump();
       case DOWN:
-        
+        player.crouch();
+    }
+  }
+}
+
+void keyReleased() {
+  if (key == CODED) {
+    switch(keyCode) {
+      case DOWN:
+        player.crouch();
     }
   }
 }
