@@ -23,4 +23,21 @@ void draw() {
   
   l.display();
   player.display();
+  player.update();
+}
+
+void keyPressed() {
+  switch(key) {
+    case ' ':
+      player.jump();
+  }
+  
+  if (key == CODED) {
+    switch(keyCode) {
+      case UP:
+        player.jump();
+      case DOWN:
+        
+    }
+  }
 }

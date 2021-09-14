@@ -1,5 +1,7 @@
 class Player extends Component {
   Level currentLevel;
+  boolean jumping = false;
+  boolean onGround = true;
   
   Player(Level l) {
     currentLevel = l;
@@ -9,6 +11,8 @@ class Player extends Component {
     
     location.x = 200;
     location.y = currentLevel.groundY - (h / 2);
+    
+    velocity.y = -10;
   }
   
   void display() {
@@ -21,10 +25,36 @@ class Player extends Component {
   }
   
   void update() {
-  
+    if (location.y <= 275 && groundCheck() == false) {
+      jumping = false;
+      velocity.y = 0;
+      delay(75);
+      velocity.y = 10;
+    }
+    
+    if (jumping == true) {
+      location.add(velocity);
+    }
+    
+    if (groundCheck() == false && jumping == false) {
+      location.add(velocity);
+    }
   }
   
   void jump() {
+    if (groundCheck() == true) {
+      if (velocity.y > 0) {
+        velocity.y *= -1;
+      }
+      jumping = true;
+    }
+  }
   
+  boolean groundCheck() {
+    if (location.y + (h / 2) >= currentLevel.groundY) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
