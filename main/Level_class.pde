@@ -1,5 +1,5 @@
 class Level extends Component {
-  boolean infinity;
+  boolean infinity; // Om banen skal være uendelig
   
   Level(boolean mapType) {
     infinity = mapType;
