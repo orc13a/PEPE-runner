@@ -1,7 +1,7 @@
 class Player extends Component {
   Level currentLevel;
   boolean jumping = false;
-  boolean onGround = true;
+  boolean crouching = false;
   
   Player(Level l) {
     currentLevel = l;
@@ -41,8 +41,8 @@ class Player extends Component {
     }
   }
   
-  void jump() {
-    if (groundCheck() == true) {
+  void jump() {    
+    if (groundCheck() == true && crouching == false) {
       if (velocity.y > 0) {
         velocity.y *= -1;
       }
@@ -52,11 +52,13 @@ class Player extends Component {
   
   void crouch(boolean keyP) {
     if (groundCheck() == true && keyP == true) {
+      crouching = true;
       h = 45;
       location.y = currentLevel.groundY - (h / 2);
     }
     
     if (groundCheck() == true && keyP == false) {
+      crouching = false;
       h = 100;
       location.y = currentLevel.groundY - (h / 2);
     }
