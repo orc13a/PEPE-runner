@@ -4,7 +4,7 @@ class Player extends Component {
   boolean crouching = false; // Om spiller sidder ned
   boolean goDown = false; // Om spilleren vil hurtigt ned fra luften
   boolean slow = false; // Om spilleren er kommer helt op
-  float jumpSpeed = 12; // Hastighed spilleren hopper og falde
+  float jumpSpeed = 10; // Hastighed spilleren hopper og falde
   float jumpSlowSpeed = -1.5; // Hastighed for at blive længere i luften
   float goDownSpeed = 23; // Hastigheden for når spilleren vil hurtigt ned
   
