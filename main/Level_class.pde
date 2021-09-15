@@ -20,7 +20,7 @@ class Level extends Component {
   }
   
   void createObstacle() {
-    Obstacle newObs = new Obstacle(this);
+    Obstacle newObs = new Obstacle(this, int(random(1, 4)));
     allObstacles.add(newObs);
   }
 }

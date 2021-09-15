@@ -1,17 +1,35 @@
 class Obstacle extends Component {
   Level currentLevel;
+  int obsType;
   
-  Obstacle(Level l) {
+  Obstacle(Level l, int obsType_) {
     currentLevel = l;
-    
-    graphic = loadImage("pepebird.png");
-    
-    location.x = 600;
-    location.y = l.groundY - 145;
-    velocity.x = l.moveSpeed;
+    obsType = obsType_;
     
     w = 60;
     h = 40;
+    
+    // Sæt random x ude for skærmen
+    location.x = 800;
+    
+    if (obsType == 1) { // fugl
+      graphic = loadImage("pepebird.png");
+      int flyHeight = int(random(1,4));
+      
+      if (flyHeight == 1) {
+        location.y = currentLevel.groundY - (h - 10);
+      }
+      
+      if (flyHeight == 2) {
+        location.y = currentLevel.groundY - (h + 50);
+      }
+      
+      if (flyHeight == 3) {
+        location.y = currentLevel.groundY - 145;
+      }
+      
+      updateSpeed();
+    }
   }
   
   void display() {
@@ -20,6 +38,10 @@ class Obstacle extends Component {
   
   void update() {
     location.add(velocity);
+  }
+  
+  void updateSpeed() {
+    velocity.x = currentLevel.moveSpeed;
   }
   
   void playerHitCheck() {
