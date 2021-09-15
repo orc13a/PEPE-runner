@@ -11,6 +11,8 @@ class Level extends Component {
     infinity = mapType;
     groundY = height - 100;
     
+    ground = loadImage("ground.png");
+    
     createObstacle();
   }
   
