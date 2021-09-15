@@ -9,6 +9,8 @@ class PEPErunnerGame {
   
   void display() {
     level.display();
+    level.update();
+    
     player.display();
     player.update();
     

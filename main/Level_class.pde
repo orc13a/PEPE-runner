@@ -3,33 +3,47 @@ class Level extends Component {
   float moveSpeed = -5;
   Player player;
   ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>();
+  ArrayList<Ground> allGround = new ArrayList<Ground>();
   float obstaclePosBefore = 0;
-  PImage ground;
-  PImage background;
   
   Level(boolean mapType) {
     infinity = mapType;
     groundY = height - 100;
     
-    ground = loadImage("ground.png");
+    graphic = loadImage("background.jpeg");
     
-    createObstacle();
+    for (int i = 0; i < 3; i++) {
+      Ground ground = new Ground(this, (i + 1), 3);
+      allGround.add(ground);
+    }
+    
+    createObstacles();
   }
   
   void display() {
-    ground();
+    image(graphic, (width / 2), (height / 2));
+    for (Ground g : allGround) {
+      g.display();
+    }
   }
   
-  void ground() {
-    line(0, height - 100, width, height - 100);
+  void update() {
+    createObstacles();
+    for (Ground g : allGround) {
+      g.update();
+    }
   }
   
-  void createObstacle() {
-    Obstacle newObs = new Obstacle(this, int(random(1, 4)));
-    allObstacles.add(newObs);
-    Obstacle newObs2 = new Obstacle(this, int(random(1, 4)));
-    allObstacles.add(newObs2);
-    Obstacle newObs3 = new Obstacle(this, int(random(1, 4)));
-    allObstacles.add(newObs3);
+  void createObstacles() {
+    if (allObstacles.size() < 5) {
+      for (int i = 0; i < 4 && allObstacles.size() != 5; i++) {
+        Obstacle newObs = new Obstacle(this, int(random(1, 4)));
+        allObstacles.add(newObs);
+      }
+    }
+  }
+  
+  void changeSpeed() {
+    moveSpeed *= 2;
   }
 }

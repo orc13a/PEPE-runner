@@ -1,5 +1,4 @@
 class Obstacle extends Component {
-  Level currentLevel;
   int obsType;
   
   Obstacle(Level l, int obsType_) {
@@ -17,10 +16,6 @@ class Obstacle extends Component {
     location.add(velocity);
   }
   
-  void updateSpeed() {
-    velocity.x = currentLevel.moveSpeed;
-  }
-  
   void playerHitCheck() {
     if (currentLevel.player.location.x + (currentLevel.player.w / 2) - 20 > location.x - (w / 2) &&
         currentLevel.player.location.x - (currentLevel.player.w / 2) + 20 < location.x + (w / 2) && 
@@ -32,8 +27,7 @@ class Obstacle extends Component {
   
   void pickObstacle() {    
     // Sæt random x ude for skærmen
-    location.x = random(currentLevel.obstaclePosBefore, (currentLevel.obstaclePosBefore + 1));
-    location.x += width;
+    location.x = random(width + 100, width + 1000);
     currentLevel.obstaclePosBefore = location.x;
     
     if (obsType == 1) { // fugl
@@ -66,7 +60,7 @@ class Obstacle extends Component {
       graphic = loadImage("bush.png");
       w = 100;
       h = 60;
-      location.y = currentLevel.groundY - (h / 2);
+      location.y = currentLevel.groundY - (h / 2) + 12;
     }
     
     updateSpeed();

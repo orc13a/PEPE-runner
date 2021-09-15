@@ -1,5 +1,4 @@
 class Player extends Component {
-  Level currentLevel;
   boolean jumping = false; // Om spilleren hopper
   boolean crouching = false; // Om spiller sidder ned
   boolean goDown = false; // Om spilleren vil hurtigt ned fra luften
