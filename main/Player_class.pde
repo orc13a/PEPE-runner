@@ -4,6 +4,9 @@ class Player extends Component {
   boolean crouching = false; // Om spiller sidder ned
   boolean goDown = false; // Om spilleren vil hurtigt ned fra luften
   boolean slow = false; // Om spilleren er kommer helt op
+  float jumpSpeed = 10; // Hastighed spilleren hopper og falde
+  float jumpSlowSpeed = -3; // Hastighed for at blive længere i luften
+  float goDownSpeed = 23; // Hastigheden for når spilleren vil hurtigt ned
   
   Player(Level l) {
     currentLevel = l; // Gemmer den bane spilleren har startet
@@ -14,7 +17,7 @@ class Player extends Component {
     location.x = 200;
     location.y = currentLevel.groundY - (h / 2);
     
-    velocity.y = -10;
+    velocity.y = -jumpSpeed;
   }
   
   void display() {
@@ -33,7 +36,7 @@ class Player extends Component {
       // Hvis spilleren ikke vil hurtigt ned
       if (goDown == false) {
         jumping = false;
-        velocity.y = -3;
+        velocity.y = jumpSlowSpeed;
       }
     }
     
@@ -42,7 +45,7 @@ class Player extends Component {
       // Hvis spilleren ikke vil hurtigt ned
       if (goDown == false) {
         jumping = false;
-        velocity.y = 10;
+        velocity.y = jumpSpeed;
         slow = true;
       }
     }
@@ -69,7 +72,7 @@ class Player extends Component {
     if (groundCheck() == true && crouching == false) {
       // Nulstiller hoppe kraften
       if (velocity.y > 0) {
-        velocity.y = -10;
+        velocity.y = -jumpSpeed;
       }
       slow = false;
       jumping = true;
@@ -81,7 +84,7 @@ class Player extends Component {
     // Hvis spilleren ikke er på jorden
     if (groundCheck() == false) {
       goDown = true;
-      velocity.y = 15;
+      velocity.y = goDownSpeed;
       jumping = false;
     }
   }

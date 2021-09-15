@@ -1,4 +1,4 @@
-class Component {
+class Component extends PEPErunnerGame {
   float x;
   float y;
   float w;

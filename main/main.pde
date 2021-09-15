@@ -2,8 +2,7 @@
 // Gustav og Oliver C
 // ----------------------------------------
 
-Level l;
-Player player;
+PEPErunnerGame game;
 
 void setup() {
   size(1200, 600);
@@ -13,40 +12,20 @@ void setup() {
   rectMode(CENTER);
   imageMode(CENTER);
   
-  l = new Level(true);
-  player = new Player(l);
+  game = new PEPErunnerGame();
 }
 
 void draw() {
   clear();
   background(255);
   
-  l.display();
-  player.display();
-  player.update();
+  game.display();
 }
 
 void keyPressed() {
-  switch(key) {
-    case ' ':
-      player.jump();
-  }
-  
-  if (key == CODED) {
-    if (keyCode == UP) {
-      player.jump();
-    }
-    
-    if (keyCode == DOWN) {
-      player.crouch(true);
-    }
-  }
+  game.keysPressed();
 }
 
 void keyReleased() {
-  if (key == CODED) {
-    if (keyCode == DOWN) {
-      player.crouch(false);
-    }
-  }
+  game.keysReleased();
 }
