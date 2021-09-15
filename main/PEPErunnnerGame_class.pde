@@ -11,6 +11,11 @@ class PEPErunnerGame {
     level.display();
     player.display();
     player.update();
+    
+    for (Obstacle obs : level.allObstacles) {
+      obs.display();
+      obs.update();
+    }
   }
   
   void keysPressed() {    

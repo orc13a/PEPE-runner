@@ -1,4 +1,4 @@
-class Component {
+class Component { 
   float x;
   float y;
   float w;

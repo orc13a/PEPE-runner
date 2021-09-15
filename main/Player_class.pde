@@ -10,8 +10,10 @@ class Player extends Component {
   
   Player(Level l) {
     currentLevel = l; // Gemmer den bane spilleren har startet
+    l.player = this;
+    graphic = loadImage("pepeman.png");
     
-    w = 50;
+    w = 85;
     h = 100;
     
     location.x = 200;
@@ -25,8 +27,9 @@ class Player extends Component {
   }
   
   void body() {
-    fill(0);
-    rect(location.x, location.y, w, h);
+    //fill(0);
+    //rect(location.x, location.y, w, h);
+    image(graphic, location.x, location.y, w, h);
   }
   
   // Opdatere spillerens værdiere
@@ -90,7 +93,11 @@ class Player extends Component {
   }
   
   // Gør at spilleren kan side ned
-  void crouch(boolean keyP) {   
+  void crouch(boolean keyP) {
+    if (groundCheck() == false) {
+      goDown();
+    }
+    
     // Hvis man vil side ned
     if (groundCheck() == true && keyP == true) {
       crouching = true;
@@ -106,8 +113,6 @@ class Player extends Component {
       location.y = currentLevel.groundY - (h / 2);
       goDown = false;
     }
-    
-    goDown();
   }
   
   // Tjekker om spilleren er på jorden
