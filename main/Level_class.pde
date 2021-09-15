@@ -23,8 +23,4 @@ class Level extends Component {
     Obstacle newObs = new Obstacle(this);
     allObstacles.add(newObs);
   }
-  
-  void playerHitCheck() {
-  
-  }
 }

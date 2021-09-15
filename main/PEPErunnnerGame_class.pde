@@ -12,9 +12,17 @@ class PEPErunnerGame {
     player.display();
     player.update();
     
-    for (Obstacle obs : level.allObstacles) {
+    for (int i = 0; i < level.allObstacles.size(); i++) {
+      Obstacle obs = level.allObstacles.get(i);
+      
       obs.display();
       obs.update();
+      obs.playerHitCheck();
+      
+      if (obs.location.x < (0 - obs.w)) {
+        level.allObstacles.remove(i);
+        i--;
+      }
     }
   }
   

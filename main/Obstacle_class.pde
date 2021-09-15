@@ -21,4 +21,13 @@ class Obstacle extends Component {
   void update() {
     location.add(velocity);
   }
+  
+  void playerHitCheck() {
+    if (currentLevel.player.location.x + (currentLevel.player.w / 2) > location.x - (w / 2) &&
+        currentLevel.player.location.x - (currentLevel.player.w / 2) < location.x + (w / 2) && 
+        currentLevel.player.location.y + (currentLevel.player.h / 2) > location.y - (h / 2) &&
+        currentLevel.player.location.y - (currentLevel.player.h / 2) < location.y + (h / 2)) {
+      println("HIT");
+    }
+  }
 }
