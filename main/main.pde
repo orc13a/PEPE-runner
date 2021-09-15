@@ -24,10 +24,6 @@ void draw() {
 
 void keyPressed() {
   game.keysPressed();
-  
-  if (key == 's') {
-    game.level.changeSpeed();
-  }
 }
 
 void keyReleased() {

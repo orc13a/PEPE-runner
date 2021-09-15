@@ -28,6 +28,7 @@ class Obstacle extends Component {
   void pickObstacle() {    
     // Sæt random x ude for skærmen
     location.x = random(width + 100, width + 1000);
+    location.x += 600;
     currentLevel.obstaclePosBefore = location.x;
     
     if (obsType == 1) { // fugl
