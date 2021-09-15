@@ -4,12 +4,12 @@ class Player extends Component {
   boolean goDown = false; // Om spilleren vil hurtigt ned fra luften
   boolean slow = false; // Om spilleren er kommer helt op
   float jumpSpeed = 10; // Hastighed spilleren hopper og falde
-  float jumpSlowSpeed = 3; // Hastighed for at blive længere i luften
+  float jumpSlowSpeed = -3; // Hastighed for at blive længere i luften
   float goDownSpeed = 23; // Hastigheden for når spilleren vil hurtigt ned
   
   Player(Level l) {
     currentLevel = l; // Gemmer den bane spilleren har startet
-    l.player = this;
+    currentLevel.player = this;
     graphic = loadImage("pepeman.png");
     
     w = 85;
@@ -26,29 +26,26 @@ class Player extends Component {
   }
   
   void body() {
-    //fill(0);
-    //rect(location.x, location.y, w, h);
     image(graphic, location.x, location.y, w, h);
   }
   
   // Opdatere spillerens værdiere
   void update() {
-    println(velocity.y);
     // Hvis spilleren kommer under 300 y, så skal spilleren hoppe langsomere (for at blive længere i luften)
-    if (location.y <= 275 && groundCheck() == false && slow == false) {
-      // Hvis spilleren ikke vil hurtigt ned
-      if (goDown == false) {
-        jumping = false;
-        velocity.y = jumpSpeed;
-      }
-    }
-    
-    // Når spilleren er kommet til maks højde, så spilleren falde ned igen
-    if (location.y <= 300 && groundCheck() == false) {
+    if (location.y <= 300 && groundCheck() == false && slow == false) {
       // Hvis spilleren ikke vil hurtigt ned
       if (goDown == false) {
         jumping = false;
         velocity.y = jumpSlowSpeed;
+      }
+    }
+    
+    // Når spilleren er kommet til maks højde, så spilleren falde ned igen
+    if (location.y <= 275 && groundCheck() == false) {
+      // Hvis spilleren ikke vil hurtigt ned
+      if (goDown == false) {
+        jumping = false;
+        velocity.y = jumpSpeed;
         slow = true;
       }
     }
