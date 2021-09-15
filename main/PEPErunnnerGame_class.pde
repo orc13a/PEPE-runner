@@ -8,6 +8,9 @@ class PEPErunnerGame {
   }
   
   void display() {
+    rectMode(CENTER);
+    imageMode(CENTER);
+    
     level.display();
     level.update();
     
@@ -26,6 +29,9 @@ class PEPErunnerGame {
         i--;
       }
     }
+    
+    rectMode(CORNER);
+    imageMode(CORNER);
   }
   
   void keysPressed() {    

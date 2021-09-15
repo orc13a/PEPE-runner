@@ -5,6 +5,7 @@ class Level extends Component {
   ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>();
   ArrayList<Ground> allGround = new ArrayList<Ground>();
   float obstaclePosBefore = 0;
+  boolean levelStart = false;
   
   Level(boolean mapType) {
     infinity = mapType;
@@ -37,7 +38,8 @@ class Level extends Component {
   void createObstacles() {
     if (allObstacles.size() < 5) {
       for (int i = 0; i < 4 && allObstacles.size() != 5; i++) {
-        Obstacle newObs = new Obstacle(this, int(random(1, 4)));
+        
+        Obstacle newObs = new Obstacle(this, int(random(1, 4)), x);
         allObstacles.add(newObs);
       }
     }

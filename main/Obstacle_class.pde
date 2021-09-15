@@ -1,9 +1,11 @@
 class Obstacle extends Component {
   int obsType;
+  float posX;
   
-  Obstacle(Level l, int obsType_) {
+  Obstacle(Level l, int obsType_,float posX_) {
     currentLevel = l;
     obsType = obsType_;
+    posX = posX_;
     
     pickObstacle();
   }
@@ -26,10 +28,9 @@ class Obstacle extends Component {
   }
   
   void pickObstacle() {    
-    // Sæt random x ude for skærmen
-    location.x = random(width + 100, width + 1000);
-    location.x += 600;
+    location.x = random((currentLevel.obstaclePosBefore + 200), (currentLevel.obstaclePosBefore + 600));
     currentLevel.obstaclePosBefore = location.x;
+    location.x += width;
     
     if (obsType == 1) { // fugl
       graphic = loadImage("pepebird.png");

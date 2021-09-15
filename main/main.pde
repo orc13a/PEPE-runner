@@ -9,9 +9,6 @@ void setup() {
   smooth(8);
   // pixelDensity(2);
   
-  rectMode(CENTER);
-  imageMode(CENTER);
-  
   game = new PEPErunnerGame();
 }
 
