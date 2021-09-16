@@ -15,6 +15,7 @@ class Obstacle extends Component {
   }
   
   void update() {
+    updateSpeed();
     location.add(velocity);
   }
   
