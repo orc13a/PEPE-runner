@@ -1,5 +1,6 @@
 class Level extends Component {
   boolean infinity; // Om banen skal være uendelig
+  float moveSpeedBefore;
   float moveSpeed = -5;
   Player player;
   ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>();
@@ -9,6 +10,7 @@ class Level extends Component {
   int rounds = 0;
   boolean changeSpeed = true;
   Button pauseBtn;
+  boolean pauseGame = false;
   
   Level(boolean mapType) {
     infinity = mapType;
@@ -22,15 +24,16 @@ class Level extends Component {
     }
     
     createObstacles();
-    pause
+    pauseBtn = new Button(loadImage("pepe-pause-button.png"), (width - 50), 50, 45, 45);
+    pauseBtn.hidden = false;
   }
   
   void display() {
-    println(moveSpeed);
     image(graphic, (width / 2), (height / 2));
     for (Ground g : allGround) {
       g.display();
     }
+    pauseBtn.display();
   }
   
   void update() {
@@ -60,6 +63,14 @@ class Level extends Component {
         Obstacle newObs = new Obstacle(this, int(random(1, 4)), x);
         allObstacles.add(newObs);
       }
+    }
+  }
+  
+  void setGamePause() {
+    if (pauseGame == false) {
+      pauseGame = true;
+      moveSpeedBefore = moveSpeed;
+      moveSpeed = 0;
     }
   }
 }

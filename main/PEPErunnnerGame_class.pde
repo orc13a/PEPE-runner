@@ -12,10 +12,12 @@ class PEPErunnerGame {
     imageMode(CENTER);
     
     level.display();
-    level.update();
-    
     player.display();
-    player.update();
+    
+    if (level.pauseGame == false) {
+      level.update();
+      player.update();
+    }
     
     for (int i = 0; i < level.allObstacles.size(); i++) {
       Obstacle obs = level.allObstacles.get(i);
@@ -55,6 +57,12 @@ class PEPErunnerGame {
       if (keyCode == DOWN) {
         player.crouch(false);
       }
+    }
+  }
+  
+  void mousePress() {
+    if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
+      level.setGamePause();
     }
   }
 }

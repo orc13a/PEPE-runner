@@ -1,15 +1,17 @@
 class Button extends Component {
   boolean hidden = true;
   
-  Button(PImage img, float x_, float y_) {
+  Button(PImage img, float x_, float y_, float w_, float h_) {
     graphic = img;
     x = x_;
     y = y_;
+    w = w_; 
+    h = h_;
   }
   
   void display() {
     if (hidden == false) {
-      image(graphic, x, y);
+      image(graphic, x, y, w, h);
     }
   }
   

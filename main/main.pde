@@ -26,3 +26,7 @@ void keyPressed() {
 void keyReleased() {
   game.keysReleased();
 }
+
+void mousePressed() {
+  game.mousePress();
+}
