@@ -5,8 +5,10 @@ class PEPErunnerGame {
   PFont PDefaultFont;
   Button playAgainBtn;
   Button continueBtn;
-  Button menuBtn;
-  Button exitBtn;
+  Button menuBtnP;
+  Button exitBtnP;
+  Button menuBtnD;
+  Button exitBtnD;
   Menu pauseMenu;
   Menu gameoverMenu;
   
@@ -19,19 +21,21 @@ class PEPErunnerGame {
     
     playAgainBtn = new Button(loadImage("PepebuttonSpilIgen.png"), (width / 2), (height / 2) - 100, 265, 65);
     continueBtn = new Button(loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
-    menuBtn = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
-    exitBtn = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    menuBtnP = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnP = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    menuBtnD = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnD = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
     
     pauseMenu = new Menu();
     gameoverMenu = new Menu();
     
     pauseMenu.allButtons.add(continueBtn);
-    pauseMenu.allButtons.add(menuBtn);
-    pauseMenu.allButtons.add(exitBtn);
+    pauseMenu.allButtons.add(menuBtnP);
+    pauseMenu.allButtons.add(exitBtnP);
     
     gameoverMenu.allButtons.add(playAgainBtn);
-    gameoverMenu.allButtons.add(menuBtn);
-    gameoverMenu.allButtons.add(exitBtn);
+    gameoverMenu.allButtons.add(menuBtnD);
+    gameoverMenu.allButtons.add(exitBtnD);
   }
   
   void display() {
@@ -120,11 +124,19 @@ class PEPErunnerGame {
       level.setGamePause();
     }
     
-    if (menuBtn.clickCheck() == true && menuBtn.hidden == false) {
+    if (menuBtnP.clickCheck() == true && menuBtnP.hidden == false) {
       
     }
     
-    if (exitBtn.clickCheck() == true && exitBtn.hidden == false) {
+    if (exitBtnP.clickCheck() == true && exitBtnP.hidden == false) {
+      exit();
+    }
+    
+    if (menuBtnD.clickCheck() == true && menuBtnD.hidden == false) {
+      
+    }
+    
+    if (exitBtnD.clickCheck() == true && exitBtnD.hidden == false) {
       exit();
     }
   }
