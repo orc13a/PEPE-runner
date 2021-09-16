@@ -3,9 +3,13 @@ class Score extends Component {
   int counter = 0;
   PImage scoreBoard;
   PImage HSBoard;
+  Table HSTable;
   
   Score(Level l) {
     currentLevel = l;
+    
+    HSTable = loadTable("highscores.csv", "header");
+    
     scoreBoard = loadImage("point-board.png");
     HSBoard = loadImage("HS-board.png");
   }
@@ -26,5 +30,9 @@ class Score extends Component {
     if (counter % 12 == 0) {
       currentScore++;
     }
+  }
+  
+  void saveHS() {
+    newRow.setInt("id", table.lastRowIndex());
   }
 }

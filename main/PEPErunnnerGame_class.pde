@@ -58,11 +58,6 @@ class PEPErunnerGame {
       exitBtn.hidden = true;
     }
     
-    playAgainBtn.display();
-    continueBtn.display();
-    menuBtn.display();
-    exitBtn.display();
-    
     for (int i = 0; i < level.allObstacles.size(); i++) {
       Obstacle obs = level.allObstacles.get(i);
       
@@ -75,6 +70,11 @@ class PEPErunnerGame {
         i--;
       }
     }
+    
+    playAgainBtn.display();
+    continueBtn.display();
+    menuBtn.display();
+    exitBtn.display();
     
     rectMode(CORNER);
     imageMode(CORNER);

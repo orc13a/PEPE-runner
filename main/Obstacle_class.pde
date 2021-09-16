@@ -29,6 +29,7 @@ class Obstacle extends Component {
         currentLevel.player.location.y - (currentLevel.player.h / 2) + 20 < location.y + (h / 2)) {
       currentLevel.pauseGame = true;
       currentLevel.showGameoverMenu = true;
+      currentLevel.levelScore.saveHS();
     }
   }
   
