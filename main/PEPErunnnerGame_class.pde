@@ -3,6 +3,7 @@ class PEPErunnerGame {
   Level level;
   PFont gameFont;
   PFont PDefaultFont;
+  PImage mainmenuBGimage;
   Button playBtn;
   Button playAgainBtn;
   Button continueBtn;
@@ -17,6 +18,7 @@ class PEPErunnerGame {
   Menu gameoverMenu;
   
   PEPErunnerGame() {
+    surface.setTitle("PEPE-runner game");
     //level = new Level(true);
     //player = new Player(level);
     
@@ -24,6 +26,8 @@ class PEPErunnerGame {
     PDefaultFont = createFont("Lucidia Grande", 12);
     
     // Main menu init --------------------
+    
+    mainmenuBGimage = loadImage("mainmenu-background.png");
     
     mainMenu = new Menu("PEPE-runner");
     
@@ -69,6 +73,7 @@ class PEPErunnerGame {
     if (mainMenu.showMenu == false) {
       runGame();
     } else {
+      image(mainmenuBGimage, (width / 2), (height / 2), width, height);
       mainMenu.display();
     }
     
