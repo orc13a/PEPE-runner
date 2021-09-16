@@ -3,6 +3,7 @@ class PEPErunnerGame {
   Level level;
   PFont gameFont;
   PFont PDefaultFont;
+  Button playAgainBtn;
   Button continueBtn;
   Button menuBtn;
   Button exitBtn;
@@ -14,6 +15,7 @@ class PEPErunnerGame {
     gameFont = createFont("PurplePurse-Regular.ttf", 12);
     PDefaultFont = createFont("Lucidia Grande", 12);
     
+    playAgainBtn = new Button(loadImage("PepebuttonSpilIgen.png"), (width / 2), (height / 2) - 100, 265, 65);
     continueBtn = new Button(loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
     menuBtn = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
     exitBtn = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
@@ -46,6 +48,17 @@ class PEPErunnerGame {
       }
     }
     
+    if (level.showGameoverMenu == true && level.pauseGame == true) {
+      playAgainBtn.hidden = false;
+      menuBtn.hidden = false;
+      exitBtn.hidden = false;
+    } else {
+      playAgainBtn.hidden = true;
+      menuBtn.hidden = true;
+      exitBtn.hidden = true;
+    }
+    
+    playAgainBtn.display();
     continueBtn.display();
     menuBtn.display();
     exitBtn.display();
@@ -96,6 +109,11 @@ class PEPErunnerGame {
   void mousePress() {
     if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
       level.setGamePause();
+    }
+    
+    if (playAgainBtn.clickCheck() == true && playAgainBtn.hidden == false) {
+      level = new Level(true);
+      player = new Player(level);
     }
     
     if (continueBtn.clickCheck() == true && continueBtn.hidden == false) {

@@ -11,6 +11,7 @@ class Level extends Component {
   boolean changeSpeed = true;
   Button pauseBtn;
   boolean pauseGame = false;
+  boolean showGameoverMenu = false;
   boolean showPauseMenu = false;
   Score levelScore;
   
