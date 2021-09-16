@@ -8,6 +8,7 @@ class Level extends Component {
   boolean levelStart = false;
   int rounds = 0;
   boolean changeSpeed = true;
+  Button pauseBtn;
   
   Level(boolean mapType) {
     infinity = mapType;
@@ -21,6 +22,7 @@ class Level extends Component {
     }
     
     createObstacles();
+    pause
   }
   
   void display() {
