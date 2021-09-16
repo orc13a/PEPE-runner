@@ -3,21 +3,44 @@ class PEPErunnerGame {
   Level level;
   PFont gameFont;
   PFont PDefaultFont;
+  Button playBtn;
   Button playAgainBtn;
   Button continueBtn;
+  Button menuBtnM;
+  Button exitBtnM;
   Button menuBtnP;
   Button exitBtnP;
   Button menuBtnD;
   Button exitBtnD;
+  Menu mainMenu;
   Menu pauseMenu;
   Menu gameoverMenu;
   
   PEPErunnerGame() {
-    level = new Level(true);
-    player = new Player(level);
+    //level = new Level(true);
+    //player = new Player(level);
     
     gameFont = createFont("PurplePurse-Regular.ttf", 12);
     PDefaultFont = createFont("Lucidia Grande", 12);
+    
+    // Main menu init --------------------
+    
+    mainMenu = new Menu("PEPE-runner");
+    
+    playBtn = new Button(loadImage("PepebuttonSpil.png.png"), (width / 2), (height / 2) - 100, 265, 65);
+    menuBtnM = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnM = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    
+    mainMenu.allButtons.add(playBtn);
+    mainMenu.allButtons.add(menuBtnM);
+    mainMenu.allButtons.add(exitBtnM);
+    
+    mainMenu.show();
+    
+    // Game menus init --------------------
+    
+    pauseMenu = new Menu("Pause");
+    gameoverMenu = new Menu("Game Over");
     
     playAgainBtn = new Button(loadImage("PepebuttonSpilIgen.png"), (width / 2), (height / 2) - 100, 265, 65);
     continueBtn = new Button(loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
@@ -26,9 +49,6 @@ class PEPErunnerGame {
     menuBtnD = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
     exitBtnD = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
     
-    pauseMenu = new Menu();
-    gameoverMenu = new Menu();
-    
     pauseMenu.allButtons.add(continueBtn);
     pauseMenu.allButtons.add(menuBtnP);
     pauseMenu.allButtons.add(exitBtnP);
@@ -36,6 +56,8 @@ class PEPErunnerGame {
     gameoverMenu.allButtons.add(playAgainBtn);
     gameoverMenu.allButtons.add(menuBtnD);
     gameoverMenu.allButtons.add(exitBtnD);
+    
+    // ----------------------------------------
   }
   
   void display() {
@@ -44,6 +66,19 @@ class PEPErunnerGame {
     textAlign(CENTER);
     textFont(gameFont);
     
+    if (mainMenu.showMenu == false) {
+      runGame();
+    } else {
+      mainMenu.display();
+    }
+    
+    rectMode(CORNER);
+    imageMode(CORNER);
+    textAlign(LEFT);
+    textFont(PDefaultFont);
+  }
+  
+  private void runGame() {
     level.display();
     player.display();
     
@@ -79,11 +114,6 @@ class PEPErunnerGame {
     
     pauseMenu.display();
     gameoverMenu.display();
-    
-    rectMode(CORNER);
-    imageMode(CORNER);
-    textAlign(LEFT);
-    textFont(PDefaultFont);
   }
   
   void keysPressed() {    

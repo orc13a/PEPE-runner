@@ -18,6 +18,7 @@ class Score extends Component {
   }
   
   void display() {
+    fill(0);
     textSize(18);
     
     image(scoreBoard, 125, 50, 200, 50);
