@@ -6,7 +6,7 @@ class PEPErunnerGame {
   Button playBtn;
   Button playAgainBtn;
   Button continueBtn;
-  Button menuBtnM;
+  Button settingsBtnM;
   Button exitBtnM;
   Button menuBtnP;
   Button exitBtnP;
@@ -27,12 +27,12 @@ class PEPErunnerGame {
     
     mainMenu = new Menu("PEPE-runner");
     
-    playBtn = new Button(loadImage("PepebuttonSpil.png.png"), (width / 2), (height / 2) - 100, 265, 65);
-    menuBtnM = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    playBtn = new Button(loadImage("PepebuttonSpil.png"), (width / 2), (height / 2) - 100, 265, 65);
+    settingsBtnM = new Button(loadImage("PepebuttonIndstillinger.png"), (width / 2), (height / 2), 265, 65);
     exitBtnM = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
     
     mainMenu.allButtons.add(playBtn);
-    mainMenu.allButtons.add(menuBtnM);
+    mainMenu.allButtons.add(settingsBtnM);
     mainMenu.allButtons.add(exitBtnM);
     
     mainMenu.show();
@@ -141,33 +141,49 @@ class PEPErunnerGame {
   }
   
   void mousePress() {
-    if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
-      level.setGamePause();
-    }
-    
-    if (playAgainBtn.clickCheck() == true && playAgainBtn.hidden == false) {
-      level = new Level(true);
-      player = new Player(level);
-    }
-    
-    if (continueBtn.clickCheck() == true && continueBtn.hidden == false) {
-      level.setGamePause();
-    }
-    
-    if (menuBtnP.clickCheck() == true && menuBtnP.hidden == false) {
+    if (mainMenu.showMenu == false) {
+      if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
+        level.setGamePause();
+      }
       
-    }
-    
-    if (exitBtnP.clickCheck() == true && exitBtnP.hidden == false) {
-      exit();
-    }
-    
-    if (menuBtnD.clickCheck() == true && menuBtnD.hidden == false) {
+      if (playAgainBtn.clickCheck() == true && playAgainBtn.hidden == false) {
+        level = new Level(true);
+        player = new Player(level);
+      }
       
-    }
-    
-    if (exitBtnD.clickCheck() == true && exitBtnD.hidden == false) {
-      exit();
+      if (continueBtn.clickCheck() == true && continueBtn.hidden == false) {
+        level.setGamePause();
+      }
+      
+      if (menuBtnP.clickCheck() == true && menuBtnP.hidden == false) {
+        
+      }
+      
+      if (exitBtnP.clickCheck() == true && exitBtnP.hidden == false) {
+        exit();
+      }
+      
+      if (menuBtnD.clickCheck() == true && menuBtnD.hidden == false) {
+        
+      }
+      
+      if (exitBtnD.clickCheck() == true && exitBtnD.hidden == false) {
+        exit();
+      }
+    } else {
+      if (playBtn.clickCheck() == true && playBtn.hidden == false) {
+        mainMenu.hide();
+        level = new Level(true);
+        player = new Player(level);
+      }
+      
+      if (settingsBtnM.clickCheck() == true && settingsBtnM.hidden == false) {
+        
+      }
+      
+      if (exitBtnM.clickCheck() == true && exitBtnM.hidden == false) {
+        exit();
+      }
     }
   }
 }

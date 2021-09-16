@@ -31,7 +31,7 @@ class Menu extends Component {
     if (showMenu == true) {
       fill(titleBGColor);
       strokeWeight(2);
-      rect(titleX, titleY - 10, 200, 50, 8);
+      rect(titleX, titleY - 10, 300, 50, 8);
       
       fill(titleColor);
       textSize(titleSize);
