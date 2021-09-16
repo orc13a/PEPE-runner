@@ -16,7 +16,10 @@ class Obstacle extends Component {
   
   void update() {
     updateSpeed();
-    location.add(velocity);
+    
+    if (currentLevel.pauseGame == false) {
+      location.add(velocity);
+    }
   }
   
   void playerHitCheck() {
@@ -24,7 +27,7 @@ class Obstacle extends Component {
         currentLevel.player.location.x - (currentLevel.player.w / 2) + 20 < location.x + (w / 2) && 
         currentLevel.player.location.y + (currentLevel.player.h / 2) - 20 > location.y - (h / 2) &&
         currentLevel.player.location.y - (currentLevel.player.h / 2) + 20 < location.y + (h / 2)) {
-      println("HIT");
+      currentLevel.pauseGame = true;
     }
   }
   
