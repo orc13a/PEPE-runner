@@ -5,16 +5,13 @@ class Score extends Component {
   PImage scoreBoard;
   PImage HSBoard;
   Table HSTable;
+  boolean tableSaved = false;
   
   Score(Level l) {
     currentLevel = l;
     
     HSTable = loadTable("highscores.csv", "header");
-    try {
-      highscore = HSTable.getInt(HSTable.lastRowIndex(), "highscore");
-    } catch (IllegalArgumentException e) {
-      highscore = 0;
-    }
+    getHS();
     
     scoreBoard = loadImage("point-board.png");
     HSBoard = loadImage("HS-board.png");
@@ -38,10 +35,28 @@ class Score extends Component {
     }
   }
   
+  void getHS() {  
+    try {
+      for (TableRow row : HSTable.rows()) {
+        int rowHSvalue = row.getInt("highscore");
+        
+        if (rowHSvalue > highscore) {
+          highscore = rowHSvalue;
+        }
+      }
+    } catch (ArrayIndexOutOfBoundsException e) {
+      highscore = 0;
+    }
+  }
+  
   void saveHS() {
-    TableRow newRow = HSTable.addRow();
-    newRow.setInt("highscore", HSTable.lastRowIndex());
-    
-    saveTable(HSTable, "data/highscores.csv");
+    if (tableSaved == false) {
+      TableRow newRow = HSTable.addRow();
+      newRow.setInt("id", HSTable.lastRowIndex() + 1);
+      newRow.setInt("highscore", currentScore);
+      
+      saveTable(HSTable, "data/highscores.csv");
+      tableSaved = true;
+    }
   }
 }
