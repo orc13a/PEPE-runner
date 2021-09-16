@@ -11,6 +11,7 @@ class Level extends Component {
   boolean changeSpeed = true;
   Button pauseBtn;
   boolean pauseGame = false;
+  boolean showPauseMenu = false;
   Score levelScore;
   
   Level(boolean mapType) {
@@ -39,7 +40,9 @@ class Level extends Component {
       g.display();
     }
     
-    pauseBtn.display();
+    if (pauseGame == false) {
+      pauseBtn.display();
+    }
     
     levelScore.display();
   }
@@ -79,8 +82,12 @@ class Level extends Component {
   void setGamePause() {
     if (pauseGame == false) {
       pauseGame = true;
+      showPauseMenu = true;
       moveSpeedBefore = moveSpeed;
       moveSpeed = 0;
+    } else {
+      moveSpeed = moveSpeedBefore;
+      pauseGame = false;
     }
   }
 }
