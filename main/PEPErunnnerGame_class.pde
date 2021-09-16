@@ -161,7 +161,7 @@ class PEPErunnerGame {
       }
       
       if (menuBtnP.clickCheck() == true && menuBtnP.hidden == false) {
-        
+        mainMenu.show();
       }
       
       if (exitBtnP.clickCheck() == true && exitBtnP.hidden == false) {
@@ -169,7 +169,7 @@ class PEPErunnerGame {
       }
       
       if (menuBtnD.clickCheck() == true && menuBtnD.hidden == false) {
-        
+        mainMenu.show();
       }
       
       if (exitBtnD.clickCheck() == true && exitBtnD.hidden == false) {
