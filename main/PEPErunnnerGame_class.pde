@@ -1,15 +1,22 @@
 class PEPErunnerGame {
   Player player;
   Level level;
+  PFont gameFont;
+  PFont PDefaultFont;
   
   PEPErunnerGame() {
     level = new Level(true);
     player = new Player(level);
+    
+    gameFont = createFont("PurplePurse-Regular.ttf", 12);
+    PDefaultFont = createFont("Lucidia Grande", 12);
   }
   
   void display() {
     rectMode(CENTER);
     imageMode(CENTER);
+    textAlign(CENTER);
+    textFont(gameFont);
     
     level.display();
     player.display();
@@ -34,6 +41,8 @@ class PEPErunnerGame {
     
     rectMode(CORNER);
     imageMode(CORNER);
+    textAlign(LEFT);
+    textFont(PDefaultFont);
   }
   
   void keysPressed() {    

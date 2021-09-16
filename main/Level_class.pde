@@ -11,6 +11,7 @@ class Level extends Component {
   boolean changeSpeed = true;
   Button pauseBtn;
   boolean pauseGame = false;
+  Score levelScore;
   
   Level(boolean mapType) {
     infinity = mapType;
@@ -24,16 +25,23 @@ class Level extends Component {
     }
     
     createObstacles();
+    
     pauseBtn = new Button(loadImage("pepe-pause-button.png"), (width - 50), 50, 45, 45);
     pauseBtn.hidden = false;
+    
+    levelScore = new Score(this);
   }
   
   void display() {
     image(graphic, (width / 2), (height / 2));
+    
     for (Ground g : allGround) {
       g.display();
     }
+    
     pauseBtn.display();
+    
+    levelScore.display();
   }
   
   void update() {
