@@ -58,6 +58,8 @@ class Level extends Component {
       moveSpeed -= 1;
       changeSpeed = false;
     }
+    
+    levelScore.update();
   }
   
   void createObstacles() {

@@ -1,5 +1,6 @@
 class Score extends Component {
   int currentScore = 0;
+  int counter = 0;
   PImage scoreBoard;
   PImage HSBoard;
   
@@ -16,10 +17,14 @@ class Score extends Component {
     text(currentScore, 200, 56);
     
     image(HSBoard, 125, 112.5, 200, 50);
-    text(currentScore, 200, 118.5);
+    text(0, 200, 118.5);
   }
   
   void update() {
+    counter++;
     
+    if (counter % 12 == 0) {
+      currentScore++;
+    }
   }
 }
