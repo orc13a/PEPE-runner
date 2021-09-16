@@ -7,6 +7,8 @@ class PEPErunnerGame {
   Button continueBtn;
   Button menuBtn;
   Button exitBtn;
+  Menu pauseMenu;
+  Menu gameoverMenu;
   
   PEPErunnerGame() {
     level = new Level(true);
@@ -19,6 +21,17 @@ class PEPErunnerGame {
     continueBtn = new Button(loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
     menuBtn = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
     exitBtn = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    
+    pauseMenu = new Menu();
+    gameoverMenu = new Menu();
+    
+    pauseMenu.allButtons.add(continueBtn);
+    pauseMenu.allButtons.add(menuBtn);
+    pauseMenu.allButtons.add(exitBtn);
+    
+    gameoverMenu.allButtons.add(playAgainBtn);
+    gameoverMenu.allButtons.add(menuBtn);
+    gameoverMenu.allButtons.add(exitBtn);
   }
   
   void display() {
@@ -30,32 +43,9 @@ class PEPErunnerGame {
     level.display();
     player.display();
     
-    if (level.pauseGame == false) {
-      if (level.showPauseMenu == true) {
-        continueBtn.hidden = true;
-        menuBtn.hidden = true;
-        exitBtn.hidden = true;
-        level.showPauseMenu = false;
-      }
-      
+    if (level.pauseGame == false && level.showGameoverMenu == false) {
       level.update();
       player.update();
-    } else {
-      if (level.showPauseMenu == true) {
-        continueBtn.hidden = false;
-        menuBtn.hidden = false;
-        exitBtn.hidden = false;
-      }
-    }
-    
-    if (level.showGameoverMenu == true && level.pauseGame == true) {
-      playAgainBtn.hidden = false;
-      menuBtn.hidden = false;
-      exitBtn.hidden = false;
-    } else {
-      playAgainBtn.hidden = true;
-      menuBtn.hidden = true;
-      exitBtn.hidden = true;
     }
     
     for (int i = 0; i < level.allObstacles.size(); i++) {
@@ -71,10 +61,20 @@ class PEPErunnerGame {
       }
     }
     
-    playAgainBtn.display();
-    continueBtn.display();
-    menuBtn.display();
-    exitBtn.display();
+    if (level.pauseGame == true && level.showGameoverMenu != true) {
+      pauseMenu.show();
+    } else {
+      pauseMenu.hide();
+    }
+    
+    if (level.showGameoverMenu == true && level.pauseGame == true) {
+      gameoverMenu.show();
+    } else {
+      gameoverMenu.hide();
+    }
+    
+    pauseMenu.display();
+    gameoverMenu.display();
     
     rectMode(CORNER);
     imageMode(CORNER);

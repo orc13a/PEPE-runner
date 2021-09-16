@@ -6,6 +6,14 @@ class Menu extends Component {
     
   }
   
+  void show() {
+    showMenu = true;
+  }
+  
+  void hide() {
+    showMenu = false;
+  }
+  
   void display() {
     if (showMenu == true) {
       for (Button btn : allButtons) {
