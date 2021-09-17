@@ -15,11 +15,11 @@ class Ground extends Component {
     
     updateSpeed();
   }
-  
+  //Displayer billedet
   void display() {
     image(graphic, location.x, location.y);
   }
-  
+  //Metode som rykker på jorden
   void update() {
     updateSpeed();
     location.add(velocity);
@@ -28,7 +28,7 @@ class Ground extends Component {
       updatePos();
     }
   }
-  
+  //Metode som opdatere billedets position.
   void updatePos() {
     inRow = rowLength;
     location.x = (width * inRow) - (w / 2);

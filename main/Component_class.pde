@@ -13,7 +13,7 @@ class Component {
     location = new PVector();
     velocity = new PVector();
   }
-  
+  //Metode der opdatere banens hastighed
   void updateSpeed() {
     velocity.x = currentLevel.moveSpeed;
   }

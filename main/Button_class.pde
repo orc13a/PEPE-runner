@@ -8,13 +8,14 @@ class Button extends Component {
     w = w_; 
     h = h_;
   }
-  
+  //Metode som viser knappen
   void display() {
     if (hidden == false) {
       image(graphic, x, y, w, h);
     }
   }
   
+  //Metode der checker om musen klikker inden for knappen
   boolean clickCheck() {
     if (mouseX > x - (w / 2) && mouseX < x + (w / 2) && mouseY > y - (h / 2) && mouseY < y + (h / 2)) {
       if (hidden == false) {

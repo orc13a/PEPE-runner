@@ -1,13 +1,13 @@
 class Level extends Component {
   boolean infinity; // Om banen skal være uendelig
   float moveSpeedBefore;
-  float moveSpeed = -5;
+  float moveSpeed = -5; //Jorden og forhindringernes hastighed
   Player player;
   ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>();
   ArrayList<Ground> allGround = new ArrayList<Ground>();
-  float obstaclePosBefore = 0;
+  float obstaclePosBefore = 0; //Forrige forhindrings startposition
   boolean levelStart = false;
-  int rounds = 0;
+  int rounds = 0; //Den tæller hver gang der er lavet x antal forhindringer
   boolean changeSpeed = true;
   Button pauseBtn;
   boolean pauseGame = false;
@@ -16,7 +16,7 @@ class Level extends Component {
   Score levelScore;
   
   Level(boolean mapType) {
-    infinity = mapType;
+    infinity = mapType; // Maptype er om banen er uendelig, eller har en max længde
     groundY = height - 100;
     
     graphic = loadImage("background.jpeg");
@@ -33,7 +33,7 @@ class Level extends Component {
     
     levelScore = new Score(this);
   }
-  
+  //Metode som viser jorden, pause knappen og scoren
   void display() {
     image(graphic, (width / 2), (height / 2));
     
@@ -47,7 +47,7 @@ class Level extends Component {
     
     levelScore.display();
   }
-  
+  //Metode som laver forhindringer, og ændre banens hastighed
   void update() {
     createObstacles();
     for (Ground g : allGround) {
@@ -65,7 +65,7 @@ class Level extends Component {
     
     levelScore.update();
   }
-  
+  //metoden som kan lave forhindringerne
   void createObstacles() {
     if (allObstacles.size() == 4) {
       rounds++;
@@ -79,7 +79,7 @@ class Level extends Component {
       }
     }
   }
-  
+  //Metode som bestemmer om spillet skal pauses
   void setGamePause() {
     if (pauseGame == false) {
       pauseGame = true;
