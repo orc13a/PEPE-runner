@@ -1,9 +1,10 @@
-class PEPErunnerGame {
+class PEPErunnerGame { 
   Player player;
   Level level;
   PFont gameFont;
   PFont PDefaultFont;
   PImage mainmenuBGimage;
+  SoundFile themeMusic;
   Button playBtn;
   Button playAgainBtn;
   Button continueBtn;
@@ -17,13 +18,16 @@ class PEPErunnerGame {
   Menu pauseMenu;
   Menu gameoverMenu;
   
-  PEPErunnerGame() {
+  PEPErunnerGame(PApplet PMain) {
     surface.setTitle("PEPE-runner game");
     //level = new Level(true);
     //player = new Player(level);
     
     gameFont = createFont("PurplePurse-Regular.ttf", 12);
     PDefaultFont = createFont("Lucidia Grande", 12);
+    
+    themeMusic = new SoundFile(PMain, "PEPE-theme-song.mp3");
+    themeMusic.loop();
     
     // Main menu init --------------------
     

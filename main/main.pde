@@ -1,6 +1,7 @@
 // ----------------------------------------
 // Gustav og Oliver C
 // ----------------------------------------
+import processing.sound.*;
 
 PEPErunnerGame game;
 
@@ -10,7 +11,7 @@ void setup() {
   // pixelDensity(2);
   frameRate(60);
   
-  game = new PEPErunnerGame();
+  game = new PEPErunnerGame(this);
 }
 
 void draw() {
