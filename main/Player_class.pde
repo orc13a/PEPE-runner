@@ -91,24 +91,26 @@ class Player extends Component {
   
   // Gør at spilleren kan side ned
   void crouch(boolean keyP) {
-    if (groundCheck() == false) {
-      goDown();
-    }
-    
-    // Hvis man vil side ned
-    if (groundCheck() == true && keyP == true) {
-      crouching = true;
-      h = 45;
-      location.y = currentLevel.groundY - (h / 2);
-      goDown = false;
-    }
-    
-    // Når man giver slip på knappen
-    if (groundCheck() == true && keyP == false) {
-      crouching = false;
-      h = 100;
-      location.y = currentLevel.groundY - (h / 2);
-      goDown = false;
+    if (currentLevel.pauseGame == false && currentLevel.showGameoverMenu == false) {
+      if (groundCheck() == false) {
+        goDown();
+      }
+      
+      // Hvis man vil side ned
+      if (groundCheck() == true && keyP == true) {
+        crouching = true;
+        h = 45;
+        location.y = currentLevel.groundY - (h / 2);
+        goDown = false;
+      }
+      
+      // Når man giver slip på knappen
+      if (groundCheck() == true && keyP == false) {
+        crouching = false;
+        h = 100;
+        location.y = currentLevel.groundY - (h / 2);
+        goDown = false;
+      }
     }
   }
   
