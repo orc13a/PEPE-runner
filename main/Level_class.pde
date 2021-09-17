@@ -45,6 +45,20 @@ class Level extends Component {
       pauseBtn.display();
     }
     
+    // Tegner og opdatere alle forhindingerne
+    for (int i = 0; i < allObstacles.size(); i++) {
+      Obstacle obs = allObstacles.get(i);
+      
+      obs.display();
+      obs.update();
+      obs.playerHitCheck();
+      
+      if (obs.location.x < (0 - obs.w)) {
+        allObstacles.remove(i);
+        i--;
+      }
+    }
+    
     levelScore.display();
   }
   //Metode som laver forhindringer, og ændre banens hastighed

@@ -92,19 +92,6 @@ class PEPErunnerGame {
       player.update();
     }
     
-    for (int i = 0; i < level.allObstacles.size(); i++) {
-      Obstacle obs = level.allObstacles.get(i);
-      
-      obs.display();
-      obs.update();
-      obs.playerHitCheck();
-      
-      if (obs.location.x < (0 - obs.w)) {
-        level.allObstacles.remove(i);
-        i--;
-      }
-    }
-    
     if (level.pauseGame == true && level.showGameoverMenu != true) {
       pauseMenu.show();
     } else {
