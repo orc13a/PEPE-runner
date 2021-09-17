@@ -16,7 +16,7 @@ class Score extends Component {
     scoreBoard = loadImage("point-board.png");
     HSBoard = loadImage("HS-board.png");
   }
-  
+  //Her tegnes score og highscore
   void display() {
     fill(0);
     textSize(18);
@@ -27,7 +27,7 @@ class Score extends Component {
     image(HSBoard, 125, 112.5, 200, 50);
     text(highscore, 200, 118.5);
   }
-  
+  //Her opdateres scoren, ved hvert 12 counter
   void update() {
     counter++;
     
@@ -35,7 +35,7 @@ class Score extends Component {
       currentScore++;
     }
   }
-  
+  //Metode som kigger is CSV filen og finder highscore
   void getHS() {  
     try {
       for (TableRow row : HSTable.rows()) {
@@ -49,7 +49,7 @@ class Score extends Component {
       highscore = 0;
     }
   }
-  
+  //Metode som gemmer highscore i CSV filen, når man dør
   void saveHS() {
     if (tableSaved == false) {
       TableRow newRow = HSTable.addRow();

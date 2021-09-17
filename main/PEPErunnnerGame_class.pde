@@ -63,7 +63,7 @@ class PEPErunnerGame {
     
     // ----------------------------------------
   }
-  
+  //Metode som viser hovedmenuen
   void display() {
     rectMode(CENTER);
     imageMode(CENTER);
@@ -82,7 +82,7 @@ class PEPErunnerGame {
     textAlign(LEFT);
     textFont(PDefaultFont);
   }
-  
+  //Metoden som faktisk tegner spillet
   private void runGame() {
     level.display();
     player.display();
@@ -107,7 +107,7 @@ class PEPErunnerGame {
     pauseMenu.display();
     gameoverMenu.display();
   }
-  
+  //Metode der sætter knapperne til at kontrollere spilleren, og deres aktion
   void keysPressed() {    
     if (key == ' ') {
       player.jump();
@@ -123,7 +123,7 @@ class PEPErunnerGame {
       }
     }
   }
-  
+  //Metode som kigger efter hvornår knap er sluppet
   void keysReleased() {
     if (key == CODED) {
       if (keyCode == DOWN) {
@@ -131,7 +131,7 @@ class PEPErunnerGame {
       }
     }
   }
-  
+  //Metode som kigger om spillets knapper bliver trykket på af musen, samt giver deres aktion
   void mousePress() {
     if (mainMenu.showMenu == false) {
       if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
