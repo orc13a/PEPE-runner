@@ -14,10 +14,16 @@ class Level extends Component {
   boolean showGameoverMenu = false;
   boolean showPauseMenu = false;
   Score levelScore;
+  boolean playedDieSound;
+  SoundFile dieSound;
+  SoundFile jumpSound;
   
-  Level(boolean mapType) {
+  Level(boolean mapType, PApplet PMain_) {
     infinity = mapType; // Maptype er om banen er uendelig, eller har en max længde
     groundY = height - 100;
+    
+    PMainObj = PMain_;
+    playedDieSound = false;
     
     graphic = loadImage("background.jpeg");
     
@@ -28,10 +34,13 @@ class Level extends Component {
     
     createObstacles();
     
-    pauseBtn = new Button(loadImage("pepe-pause-button.png"), (width - 50), 50, 45, 45);
+    pauseBtn = new Button(PMainObj, loadImage("pepe-pause-button.png"), (width - 50), 50, 45, 45);
     pauseBtn.hidden = false;
     
     levelScore = new Score(this);
+    
+    dieSound = new SoundFile(PMainObj, "die-soundeffect.mp3");
+    jumpSound = new SoundFile(PMainObj, "jump-soundeffect.wav");
   }
   //Metode som viser jorden, pause knappen og scoren
   void display() {

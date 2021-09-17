@@ -27,6 +27,10 @@ class Obstacle extends Component {
         currentLevel.player.location.x - (currentLevel.player.w / 2) + 20 < location.x + (w / 2) && 
         currentLevel.player.location.y + (currentLevel.player.h / 2) - 20 > location.y - (h / 2) &&
         currentLevel.player.location.y - (currentLevel.player.h / 2) + 20 < location.y + (h / 2)) {
+      if (currentLevel.playedDieSound == false) {
+        currentLevel.dieSound.play();
+        currentLevel.playedDieSound = true;
+      }
       currentLevel.pauseGame = true;
       currentLevel.showGameoverMenu = true;
       currentLevel.levelScore.saveHS();

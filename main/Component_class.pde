@@ -8,6 +8,7 @@ class Component {
   PVector location;
   PVector velocity;
   float groundY;
+  PApplet PMainObj;
   
   Component() {
     location = new PVector();

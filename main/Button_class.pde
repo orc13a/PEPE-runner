@@ -1,5 +1,6 @@
 class Button extends Component {
   boolean hidden = true;
+  SoundFile buttonClick;
   
   Button(PImage img, float x_, float y_, float w_, float h_) {
     graphic = img;
@@ -8,11 +9,28 @@ class Button extends Component {
     w = w_; 
     h = h_;
   }
+  
+  Button(PApplet PMain_, PImage img, float x_, float y_, float w_, float h_) {
+    PMainObj = PMain_;
+    
+    graphic = img;
+    x = x_;
+    y = y_;
+    w = w_; 
+    h = h_;
+    
+    buttonClick = new SoundFile(PMainObj, "buttonClick-soundeffect.wav");
+  }
+  
   //Metode som viser knappen
   void display() {
     if (hidden == false) {
       image(graphic, x, y, w, h);
     }
+  }
+  
+  void buttonClick() {
+    buttonClick.play();
   }
   
   //Metode der checker om musen klikker inden for knappen

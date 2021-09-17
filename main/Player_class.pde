@@ -76,6 +76,7 @@ class Player extends Component {
       }
       slow = false;
       jumping = true;
+      currentLevel.jumpSound.play();
     }
   }
   

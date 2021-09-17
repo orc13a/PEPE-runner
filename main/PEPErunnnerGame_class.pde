@@ -1,4 +1,5 @@
-class PEPErunnerGame { 
+class PEPErunnerGame {
+  PApplet PMain;
   Player player;
   Level level;
   PFont gameFont;
@@ -18,7 +19,8 @@ class PEPErunnerGame {
   Menu pauseMenu;
   Menu gameoverMenu;
   
-  PEPErunnerGame(PApplet PMain) {
+  PEPErunnerGame(PApplet PMain_) {
+    PMain = PMain_;
     surface.setTitle("PEPE-runner game");
     //level = new Level(true);
     //player = new Player(level);
@@ -35,9 +37,9 @@ class PEPErunnerGame {
     
     mainMenu = new Menu("PEPE-runner");
     
-    playBtn = new Button(loadImage("PepebuttonSpil.png"), (width / 2), (height / 2) - 100, 265, 65);
-    settingsBtnM = new Button(loadImage("PepebuttonIndstillinger.png"), (width / 2), (height / 2), 265, 65);
-    exitBtnM = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    playBtn = new Button(PMain, loadImage("PepebuttonSpil.png"), (width / 2), (height / 2) - 100, 265, 65);
+    settingsBtnM = new Button(PMain, loadImage("PepebuttonIndstillinger.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnM = new Button(PMain, loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
     
     mainMenu.allButtons.add(playBtn);
     mainMenu.allButtons.add(settingsBtnM);
@@ -50,12 +52,12 @@ class PEPErunnerGame {
     pauseMenu = new Menu("Pause");
     gameoverMenu = new Menu("Game Over");
     
-    playAgainBtn = new Button(loadImage("PepebuttonSpilIgen.png"), (width / 2), (height / 2) - 100, 265, 65);
-    continueBtn = new Button(loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
-    menuBtnP = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
-    exitBtnP = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
-    menuBtnD = new Button(loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
-    exitBtnD = new Button(loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    playAgainBtn = new Button(PMain, loadImage("PepebuttonSpilIgen.png"), (width / 2), (height / 2) - 100, 265, 65);
+    continueBtn = new Button(PMain, loadImage("PepebuttonFortsæt.png"), (width / 2), (height / 2) - 100, 265, 65);
+    menuBtnP = new Button(PMain, loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnP = new Button(PMain, loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
+    menuBtnD = new Button(PMain, loadImage("PepebuttonMenu.png"), (width / 2), (height / 2), 265, 65);
+    exitBtnD = new Button(PMain, loadImage("PepebuttonAfslut.png"), (width / 2), (height / 2) + 100, 265, 65);
     
     pauseMenu.allButtons.add(continueBtn);
     pauseMenu.allButtons.add(menuBtnP);
@@ -139,37 +141,45 @@ class PEPErunnerGame {
   void mousePress() {
     if (mainMenu.showMenu == false) {
       if (level.pauseBtn.clickCheck() == true && level.pauseBtn.hidden == false) {
+        level.pauseBtn.buttonClick();
         level.setGamePause();
       }
       
       if (playAgainBtn.clickCheck() == true && playAgainBtn.hidden == false) {
-        level = new Level(true);
+        playAgainBtn.buttonClick();
+        level = new Level(true, PMain);
         player = new Player(level);
       }
       
       if (continueBtn.clickCheck() == true && continueBtn.hidden == false) {
+        continueBtn.buttonClick();
         level.setGamePause();
       }
       
       if (menuBtnP.clickCheck() == true && menuBtnP.hidden == false) {
+        menuBtnP.buttonClick();
         mainMenu.show();
       }
       
       if (exitBtnP.clickCheck() == true && exitBtnP.hidden == false) {
+        exitBtnP.buttonClick();
         exit();
       }
       
       if (menuBtnD.clickCheck() == true && menuBtnD.hidden == false) {
+        menuBtnD.buttonClick();
         mainMenu.show();
       }
       
       if (exitBtnD.clickCheck() == true && exitBtnD.hidden == false) {
+        exitBtnD.buttonClick();
         exit();
       }
     } else {
       if (playBtn.clickCheck() == true && playBtn.hidden == false) {
+        playBtn.buttonClick();
         mainMenu.hide();
-        level = new Level(true);
+        level = new Level(true, PMain);
         player = new Player(level);
       }
       
@@ -178,6 +188,7 @@ class PEPErunnerGame {
       }
       
       if (exitBtnM.clickCheck() == true && exitBtnM.hidden == false) {
+        exitBtnM.buttonClick();
         exit();
       }
     }
