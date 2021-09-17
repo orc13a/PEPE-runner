@@ -9,11 +9,11 @@ class Obstacle extends Component {
     
     pickObstacle();
   }
-  
+  //Metoden som viser billede
   void display() {
     image(graphic, location.x, location.y, w, h);
   }
-  
+  //Metode som opdatere forhindringernes hastighed samt flytter dem, og checker om spillet er pauset
   void update() {
     updateSpeed();
     
@@ -21,7 +21,7 @@ class Obstacle extends Component {
       location.add(velocity);
     }
   }
-  
+  //Metode som checker om spilleren rammer en forhindring
   void playerHitCheck() {
     if (currentLevel.player.location.x + (currentLevel.player.w / 2) - 20 > location.x - (w / 2) &&
         currentLevel.player.location.x - (currentLevel.player.w / 2) + 20 < location.x + (w / 2) && 
@@ -32,7 +32,7 @@ class Obstacle extends Component {
       currentLevel.levelScore.saveHS();
     }
   }
-  
+  //Metode som vælger tilfældig forhindring, og placere den tilfældigt.
   void pickObstacle() {    
     location.x = random((currentLevel.obstaclePosBefore + 200), (currentLevel.obstaclePosBefore + 600));
     currentLevel.obstaclePosBefore = location.x;
