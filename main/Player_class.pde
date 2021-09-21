@@ -20,7 +20,8 @@ class Player extends Component {
     
     velocity.y = -jumpSpeed;
   }
-  //Metode som viser spilleren
+  
+  // Metode som viser spilleren
   void display() {
     body();
   }

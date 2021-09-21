@@ -42,6 +42,7 @@ class Level extends Component {
     dieSound = new SoundFile(PMainObj, "die-soundeffect.mp3");
     jumpSound = new SoundFile(PMainObj, "jump-soundeffect.wav");
   }
+  
   //Metode som viser jorden, pause knappen og scoren
   void display() {
     image(graphic, (width / 2), (height / 2));
@@ -70,9 +71,11 @@ class Level extends Component {
     
     levelScore.display();
   }
+  
   //Metode som laver forhindringer, og ændre banens hastighed
   void update() {
     createObstacles();
+    
     for (Ground g : allGround) {
       g.update();
     }
@@ -88,11 +91,11 @@ class Level extends Component {
     
     levelScore.update();
   }
+  
   //metoden som kan lave forhindringerne
   void createObstacles() {
     if (allObstacles.size() == 4) {
       rounds++;
-      //obstaclePosBefore = 0;
     }
     
     if (allObstacles.size() < 5) {
@@ -102,6 +105,7 @@ class Level extends Component {
       }
     }
   }
+  
   //Metode som bestemmer om spillet skal pauses
   void setGamePause() {
     if (pauseGame == false) {
