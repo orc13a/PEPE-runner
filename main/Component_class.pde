@@ -1,5 +1,5 @@
 class Component {
-  Level currentLevel;
+  Level currentLevel; // Til af refere til nuværende bane
   float x;
   float y;
   float w;
@@ -15,7 +15,7 @@ class Component {
     velocity = new PVector();
   }
   
-  //Metode der opdatere banens hastighed
+  // Metode der opdatere banens hastighed
   void updateSpeed() {
     velocity.x = currentLevel.moveSpeed;
   }

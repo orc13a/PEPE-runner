@@ -1,12 +1,11 @@
 class Level extends Component {
   boolean infinity; // Om banen skal være uendelig
-  float moveSpeedBefore;
+  float moveSpeedBefore; // Til at gemme hastigheden
   float moveSpeed = -5; //Jorden og forhindringernes hastighed
-  Player player;
-  ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>();
-  ArrayList<Ground> allGround = new ArrayList<Ground>();
+  Player player; // Nuværende spiller objekt
+  ArrayList<Obstacle> allObstacles = new ArrayList<Obstacle>(); // Alle forhindringer
+  ArrayList<Ground> allGround = new ArrayList<Ground>(); // Alle jord billeder
   float obstaclePosBefore = 0; //Forrige forhindrings startposition
-  boolean levelStart = false;
   int rounds = 0; //Den tæller hver gang der er lavet x antal forhindringer
   boolean changeSpeed = true;
   Button pauseBtn;
@@ -27,6 +26,7 @@ class Level extends Component {
     
     graphic = loadImage("background.jpeg");
     
+    // Der laves 4 jord som skal tegnes i et loop til at lige jorden er uendelig
     for (int i = 0; i < 4; i++) {
       Ground ground = new Ground(this, (i + 1), 4);
       allGround.add(ground);
@@ -43,7 +43,7 @@ class Level extends Component {
     jumpSound = new SoundFile(PMainObj, "jump-soundeffect.wav");
   }
   
-  //Metode som viser jorden, pause knappen og scoren
+  // Metode som viser jorden, pause knappen og scoren
   void display() {
     image(graphic, (width / 2), (height / 2));
     
@@ -72,7 +72,7 @@ class Level extends Component {
     levelScore.display();
   }
   
-  //Metode som laver forhindringer, og ændre banens hastighed
+  // Metode som laver forhindringer, og ændre banens hastighed
   void update() {
     createObstacles();
     
@@ -84,6 +84,7 @@ class Level extends Component {
       changeSpeed = true;
     }
     
+    // Hver 10'ene forhindring som bliver slettet sættes hastigheden op
     if (rounds % 10 == 0 && changeSpeed == true) {
       moveSpeed -= 1;
       changeSpeed = false;
@@ -92,8 +93,9 @@ class Level extends Component {
     levelScore.update();
   }
   
-  //metoden som kan lave forhindringerne
+  // Metoden som kan lave forhindringerne
   void createObstacles() {
+    // Hver gang en forhindring er blevet slettet gå round op
     if (allObstacles.size() == 4) {
       rounds++;
     }
@@ -106,7 +108,7 @@ class Level extends Component {
     }
   }
   
-  //Metode som bestemmer om spillet skal pauses
+  // Metode som bestemmer om spillet skal pauses
   void setGamePause() {
     if (pauseGame == false) {
       pauseGame = true;

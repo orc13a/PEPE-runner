@@ -8,7 +8,7 @@ class Ground extends Component {
     rowLength = rowLength_;
     
     graphic = loadImage("ground.png");
-    w = 1482;
+    w = 1482; // Billedets fil længde
     
     location.x = (width * inRow) - (w / 2);
     location.y = height + 3;
@@ -16,14 +16,15 @@ class Ground extends Component {
     updateSpeed();
   }
   
-  //Displayer billedet
+  // Displayer billedet
   void display() {
     image(graphic, location.x, location.y);
   }
   
-  //Metode som rykker på jorden
+  // Metode som rykker på jorden
   void update() {
     updateSpeed();
+    
     location.add(velocity);
     
     if (location.x < -(w/2)) {
@@ -31,7 +32,7 @@ class Ground extends Component {
     }
   }
   
-  //Metode som opdatere billedets position.
+  // Metode som opdatere billedets position.
   void updatePos() {
     inRow = rowLength;
     location.x = (width * inRow) - (w / 2);

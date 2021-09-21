@@ -11,6 +11,7 @@ void setup() {
   // pixelDensity(2);
   frameRate(60);
   
+  // Spillet skal bruge Processing main objekt til at kunne arbejde med Sound bibloteket
   game = new PEPErunnerGame(this);
 }
 

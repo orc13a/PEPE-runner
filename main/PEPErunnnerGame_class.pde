@@ -21,9 +21,7 @@ class PEPErunnerGame {
   
   PEPErunnerGame(PApplet PMain_) {
     PMain = PMain_;
-    surface.setTitle("PEPE-runner game");
-    //level = new Level(true);
-    //player = new Player(level);
+    surface.setTitle("PEPE-runner game"); // Sætter program vinduets title
     
     gameFont = createFont("PurplePurse-Regular.ttf", 12);
     PDefaultFont = createFont("Lucidia Grande", 12);
@@ -72,6 +70,7 @@ class PEPErunnerGame {
   
   // Metode som viser hovedmenuen
   void display() {
+    // Vores spil skal bruge dette
     rectMode(CENTER);
     imageMode(CENTER);
     textAlign(CENTER);
@@ -84,6 +83,7 @@ class PEPErunnerGame {
       mainMenu.display();
     }
     
+    // Sætter de tilbage til Processing default
     rectMode(CORNER);
     imageMode(CORNER);
     textAlign(LEFT);

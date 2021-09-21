@@ -29,12 +29,13 @@ class Obstacle extends Component {
     if (currentLevel.player.location.x + (currentLevel.player.w / 2) - 20 > location.x - (w / 2) &&
         currentLevel.player.location.x - (currentLevel.player.w / 2) + 20 < location.x + (w / 2) && 
         currentLevel.player.location.y + (currentLevel.player.h / 2) - 20 > location.y - (h / 2) &&
-        currentLevel.player.location.y - (currentLevel.player.h / 2) + 20 < location.y + (h / 2)) {
-    // --
+        currentLevel.player.location.y - (currentLevel.player.h / 2) + 20 < location.y + (h / 2))
+    {
       if (currentLevel.playedDieSound == false) {
         currentLevel.dieSound.play();
         currentLevel.playedDieSound = true;
       }
+      
       currentLevel.pauseGame = true;
       currentLevel.showGameoverMenu = true;
       currentLevel.levelScore.saveHS();
@@ -42,11 +43,13 @@ class Obstacle extends Component {
   }
   
   // Metode som vælger tilfældig forhindring, og placere den tilfældigt.
-  void pickObstacle() {    
+  void pickObstacle() {
+    // Her udregnes hvor den næste forhindring skal starte
     location.x = random((currentLevel.obstaclePosBefore + 200), (currentLevel.obstaclePosBefore + 600));
-    currentLevel.obstaclePosBefore = location.x;
-    location.x += width;
+    currentLevel.obstaclePosBefore = location.x; // Gemmer den
+    location.x += width; // Tilføjer breden af vinduet for at forhindringen starter ud for skærmen
     
+    // De næste 3 statements laver den tilfældige forhindring
     if (obsType == 1) { // fugl
       graphic = loadImage("pepebird.png");
       w = 60;

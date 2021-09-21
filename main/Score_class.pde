@@ -10,6 +10,7 @@ class Score extends Component {
   Score(Level l) {
     currentLevel = l;
     
+    // Den tabel som gemmer alle de highscores der bliver lavet på ens enhed
     HSTable = loadTable("highscores.csv", "header");
     getHS();
     
@@ -39,7 +40,8 @@ class Score extends Component {
   }
   
   // Metode som kigger is CSV filen og finder highscore
-  void getHS() {  
+  void getHS() {
+    // Prøve hvis der er noget i highscore csv filen
     try {
       for (TableRow row : HSTable.rows()) {
         int rowHSvalue = row.getInt("highscore");

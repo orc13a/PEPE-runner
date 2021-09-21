@@ -29,6 +29,7 @@ class Button extends Component {
     }
   }
   
+  // Spiller knappens lyd
   void buttonClick() {
     buttonClick.play();
   }
