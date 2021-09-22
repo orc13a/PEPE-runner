@@ -32,6 +32,12 @@ class Player extends Component {
   
   // Opdatere spillerens værdiere
   void update() {
+    // En fiks til at spilleren ikke kan komme til at hoppe forevigt
+    if (location.y <= 274) {
+      jumping = false;
+      velocity.y = jumpSpeed;
+    }
+    
     // Hvis spilleren kommer under 300 y, så skal spilleren hoppe langsomere (for at blive længere i luften)
     if (location.y <= 300 && groundCheck() == false && slow == false) {
       // Hvis spilleren ikke vil hurtigt ned
@@ -40,7 +46,7 @@ class Player extends Component {
         velocity.y = jumpSlowSpeed;
       }
     }
-    
+
     // Når spilleren er kommet til maks højde, så spilleren falde ned igen
     if (location.y <= 275 && groundCheck() == false) {
       // Hvis spilleren ikke vil hurtigt ned
