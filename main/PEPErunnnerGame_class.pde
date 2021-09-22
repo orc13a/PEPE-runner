@@ -120,6 +120,12 @@ class PEPErunnerGame {
   void keysPressed() {    
     if (key == ' ') {
       player.jump();
+      
+      if (playAgainBtn.clickCheck() == true && playAgainBtn.hidden == false) {
+        playAgainBtn.buttonClick();
+        level = new Level(true, PMain);
+        player = new Player(level);
+      }
     }
     
     if (key == CODED) {
